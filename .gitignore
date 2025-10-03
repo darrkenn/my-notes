@@ -1,1 +1,4 @@
 /target
+package-lock.json
+.prettiersrc
+/node_modules

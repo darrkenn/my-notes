@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Notes</title>
+  </head>
+
+  <body class="flex flex-col items-center h-screen bg-black text-white">
+    <div class="h-screen w-full md:w-1/3">
+      <h1 class="text-4xl font-extrabold md:text-5xl pt-6 pb-2 text-center">
+        Notes
+      </h1>
+      <hr class="pb-6" />
+
+      <div class="w-full">
+        <h1 class="text-2xl font-bold">Openbsd VM</h1>
+        <hr class="" />
+        <p class="text-lg">Create the VM:</p>
+        <pre class="bg-neutral-900 text-sm"><code>qm create NUM \\
+--bios ovmf \\
+--sockets 1 \\
+--cores 1 \\
+--cpu kvm64 \\
+--efidisk0 local-lvm:1,format=raw \\
+--ide2 none,media=cdrom \\
+--machine q35 \\
+--memory 1024 \\
+--name NAME \\
+--net0 virtio,bridge=vmbr0,firewall=1 \\
+--ostype other \\
+--scsi0 local-lvm:10,format=raw,iothread=on \\
+--scsihw virtio-scsi-single \\
+--ide0 local-lvm:0,import-from=/var/lib/vz/template/iso/install77.img</code></pre>
+
+        <p class="text-lg">Remove install media</p>
+        <pre
+          class="bg-neutral-900 text-sm"
+        ><code>qm set NUM --delete ide0</code></pre>
+      </div>
+    </div>
+  </body>
+</html>
